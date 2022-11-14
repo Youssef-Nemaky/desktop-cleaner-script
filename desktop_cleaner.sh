@@ -7,50 +7,15 @@ if [[ ! -e old_desktop ]]; then
     mkdir old_desktop
 fi
 
-if [[ ! -e old_desktop/text_files ]]; then
-    # Make a directory called text_files if it does not exist
-    mkdir old_desktop/text_files
-fi
+directories=("text_files" "images" "pdfs" "audio_files" "videos" "folders" "archives" "excel_files" "shortcuts")
 
-if [[ ! -e old_desktop/images ]]; then
-    # Make a directory called images if it does not exist
-    mkdir old_desktop/images
-fi
+# loop through the different directories and make them if they don't exist
+for dr in ${directories[@]}; do
+  if [[ ! -e old_desktop/$dr ]]; then # Check if the directory exists
+        mkdir old_desktop/$dr # Make the directory
+    fi
+done
 
-if [[ ! -e old_desktop/pdfs ]]; then
-    # Make a directory called pdfs if it does not exist
-    mkdir old_desktop/pdfs
-fi
-
-if [[ ! -e old_desktop/audio_files ]]; then
-    # Make a directory called audio_files if it does not exist
-    mkdir old_desktop/audio_files
-fi
-
-if [[ ! -e old_desktop/videos ]]; then
-    # Make a directory called videos if it does not exist
-    mkdir old_desktop/videos
-fi
-
-if [[ ! -e old_desktop/folders ]]; then
-    # Make a directory called folders if it does not exist
-    mkdir old_desktop/folders
-fi
-
-if [[ ! -e old_desktop/archives ]]; then
-    # Make a directory called archives if it does not exist
-    mkdir old_desktop/archives
-fi
-
-if [[ ! -e old_desktop/excel_files ]]; then
-    # Make a directory called excel_files if it does not exist
-    mkdir old_desktop/excel_files
-fi
-
-if [[ ! -e old_desktop/shortcuts ]]; then
-    # Make a directory called shortcuts if it does not exist
-    mkdir old_desktop/shortcuts
-fi
 #######################################################################################################
 # Move all the images into one directory
 
@@ -89,7 +54,7 @@ mv *.mp4 *.m4a *.m4p *.m4b *.m4r *.m4v old_desktop/videos
 #######################################################################################################
 # Move all shortcuts into one directory
 
-mv *.lnk old_desktop/shortcuts
+mv *.lnk old_desktop/shortcuts # For some reason not all shortcuts are moved - I have no idea why not :/
 
 #######################################################################################################
 # Move all excel files into one directory
